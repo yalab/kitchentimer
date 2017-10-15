@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:kitchentimer" x:Class="kitchentimer.kitchentimerPage">
   <StackLayout>
     <Label x:Name="valueLabel"
-           Text="A simple Label"
+           Text="--:--"
            Font="Large"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
