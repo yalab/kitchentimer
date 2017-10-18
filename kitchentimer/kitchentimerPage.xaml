@@ -6,10 +6,14 @@
            Font="Large"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-
-    <Button Text="Click Me!"
+    <Button Text="Start"
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand"
-            Clicked="OnButtonClicked"/>
+            Clicked="OnStartButtonClicked"/>
+    <Button Text="Stop"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
+            Clicked="OnStopButtonClicked"/>
+    
   </StackLayout>
 </ContentPage>
