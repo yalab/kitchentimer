@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:kitchentimer" x:Class="kitchentimer.kitchentimerPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:kitchentimer;assembly=kitchentimer" 
+    x:Class="kitchentimer.kitchentimerPage">
   <StackLayout>
     <Label x:Name="valueLabel"
            Text="--:--"
@@ -14,6 +17,7 @@
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand"
             Clicked="OnStopButtonClicked"/>
-    
+       <Image Source="{local:ImageResource kitchentimer.Resources.Images.bg_mushroom.png}" />
+
   </StackLayout>
 </ContentPage>
