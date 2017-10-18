@@ -9,11 +9,28 @@ namespace kitchentimer
         DateTime finishTime;
         IRingTone ringTone;
         DateTime TimeZero = new DateTime(0);
+        int Seconds = 0;
 
         public kitchentimerPage()
         {
             InitializeComponent();
             ringTone = DependencyService.Get<IRingTone>();
+            finishTime = TimeZero;
+
+            foreach (var s in Enum.GetValues(typeof(Sec)))
+            {
+                var button = this.FindByName<Button>("button" + s.ToString());
+                button.Text = ((int)s / 60).ToString() + "分";
+                button.Clicked += ((object sender, EventArgs e) => OnButtonClick(s));
+            }
+        }
+
+        void OnButtonClick(Object sec)
+        {
+            Seconds += (int) sec;
+            var m = Seconds / 60;
+            var s = Seconds - m * 60;
+            valueLabel.Text = string.Format("{0:00}:{1:00}", m, s);
         }
 
         private void OnStartButtonClicked(object sender, EventArgs args)
@@ -21,24 +38,28 @@ namespace kitchentimer
             StartTimer();
         }
 
-        private void OnStopButtonClicked(object sender, EventArgs args)
+        private void OnResetButtonClicked(object sender, EventArgs args)
         {
-            StopTimer();
+            ResetTimer();
         }
 
         private async void StartTimer()
         {
-            finishTime = DateTime.Now.AddSeconds(10);
+            if(Seconds < 1)
+            {
+                return;
+            }
+            finishTime = DateTime.Now.AddSeconds(Seconds);
             while (true)
             {
                 if(!Tick()){
                     break;
                 }
-                await Task.Delay(60);
+                await Task.Delay(100);
             }
         }
 
-        private void StopTimer()
+        private void ResetTimer()
         {
             ResetLabel();
             finishTime = TimeZero;
@@ -63,6 +84,7 @@ namespace kitchentimer
         private void ResetLabel ()
         {
             valueLabel.Text = "--:--";
+            Seconds = 0;
         }
 
         private void TimerFinished ()

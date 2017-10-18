@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="IRingTone.cs" />
     <Compile Include="ImageResourceExtension.cs" />
+    <Compile Include="Sec.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

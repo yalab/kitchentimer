@@ -9,15 +9,26 @@
            Font="Large"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+    <StackLayout Orientation="Horizontal"
+                 VerticalOptions="Center" 
+                 HorizontalOptions="Center" >
+    <Button Text="00"
+        x:Name="buttonA"/>
+    <Button Text="00"
+        x:Name="buttonB"/>
+    <Button Text="00"
+        x:Name="buttonC"/>
+    </StackLayout>
+        
     <Button Text="Start"
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand"
             Clicked="OnStartButtonClicked"/>
-    <Button Text="Stop"
+    <Button Text="Reset"
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand"
-            Clicked="OnStopButtonClicked"/>
-       <Image Source="{local:ImageResource kitchentimer.Resources.Images.bg_mushroom.png}" />
+            Clicked="OnResetButtonClicked"/>
+      <Image Source="{local:ImageResource kitchentimer.Resources.Images.bg_mushroom.png}" Aspect="AspectFit" />
 
   </StackLayout>
 </ContentPage>
