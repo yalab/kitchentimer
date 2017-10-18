@@ -42,13 +42,11 @@ namespace kitchentimer
             var m = sec / 60;
             var s = sec - m * 60;
             StringBuilder label = new StringBuilder();
-            if (m > 0)
-            {
+            if (m > 0) {
                 label.Append(m);
                 label.Append("分");
             }
-            if (s > 0)
-            {
+            if (s > 0) {
                 label.Append(s);
                 label.Append("秒");
             }
@@ -57,6 +55,9 @@ namespace kitchentimer
 
         private string FormatMinSec(int sec)
         {
+            if (sec < 0) {
+                sec = 0;
+            }
             var m = sec / 60;
             var s = sec - m * 60;
             return string.Format("{0:00}:{1:00}", m, s);
@@ -67,6 +68,8 @@ namespace kitchentimer
             Button btn = (Button)sender;
             if (Seconds > 0 || stoppedTime > TimeZero) {
                 StartTimer();
+            } else if (!NextTick()) {
+                ResetTimer();
             } else {
                 StopTimer();
             }
@@ -117,14 +120,19 @@ namespace kitchentimer
             if (stoppedTime > TimeZero) {
                 return true;
             }
-            DateTime now = DateTime.Now;
-            TimeSpan diff = finishTime - now;
-            if (diff <= TimeSpan.Zero) {
+            if (!NextTick()) {
                 TimerFinished();
                 return false;
             }
-            valueLabel.Text = FormatMinSec((int)diff.TotalSeconds);
             return true;
+        }
+
+        private Boolean NextTick ()
+        {
+            DateTime now = DateTime.Now;
+            TimeSpan diff = finishTime - now;
+            valueLabel.Text = FormatMinSec((int)diff.TotalSeconds);
+            return diff > TimeSpan.Zero;
         }
 
         private void ResetLabel ()
