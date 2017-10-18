@@ -4,6 +4,7 @@ using Android.Media;
 using Android.Net;
 using Android.Content;
 using Android.App;
+using Android.OS;
 
 [assembly: Dependency(typeof(kitchentimer.Droid.RingTone))]
 namespace kitchentimer.Droid
@@ -11,30 +12,32 @@ namespace kitchentimer.Droid
     public class RingTone : IRingTone
     {
         private Ringtone ringTone;
+        private Context context;
+        private Vibrator vibrator;
+        private AudioManager audiomanager;
         public RingTone()
         {
             Android.Net.Uri alert = RingtoneManager.GetDefaultUri(RingtoneType.Alarm);
-
-            if (alert == null)
-            {
-                alert = RingtoneManager.GetDefaultUri(RingtoneType.Notification);
-                if (alert == null)
-                {
-                    alert = RingtoneManager.GetDefaultUri(RingtoneType.Ringtone);
-                }
-            }
-            Context context = Android.App.Application.Context;
+            context = Android.App.Application.Context;
             ringTone = RingtoneManager.GetRingtone(context, alert);
+            vibrator = (Vibrator)context.GetSystemService(Context.VibratorService);
+            audiomanager = (AudioManager)context.GetSystemService(Context.AudioService);
         }
 
         public void Play()
         {
-            ringTone.Play();
+            var volume = audiomanager.GetStreamVolume(Stream.Ring);
+            if (volume > 0) {
+                ringTone.Play();
+            } else {
+                vibrator.Vibrate(1000 * 3);
+            }
         }
 
         public void Stop()
         {
             ringTone.Stop();
+            vibrator.Cancel();
         }
     }
 }
