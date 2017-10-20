@@ -3,30 +3,43 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:local="clr-namespace:kitchentimer;assembly=kitchentimer" 
     x:Class="kitchentimer.kitchentimerPage">
-  <StackLayout>
+  <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+        
+    <Image Source="{local:ImageResource kitchentimer.Resources.Images.background0.png}" 
+        Aspect="AspectFill" 
+        AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
+        AbsoluteLayout.LayoutFlags="All"/>
+        
     <Label x:Name="valueLabel"
-           Text="--:--"
-           Font="Large"
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        Text="--:--"
+        Font="40"
+        AbsoluteLayout.LayoutBounds="0.5, 0.115, AutoSize, AutoSize" 
+        AbsoluteLayout.LayoutFlags="PositionProportional"/>
+        
     <StackLayout Orientation="Horizontal"
-                 VerticalOptions="Center" 
-                 HorizontalOptions="Center" >
-        <Button Text="" x:Name="buttonA"/>
-        <Button Text="" x:Name="buttonB"/>
-        <Button Text="" x:Name="buttonC"/>
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        AbsoluteLayout.LayoutBounds="0.12, 0.84, AutoSize, AutoSize" 
+        AbsoluteLayout.LayoutFlags="PositionProportional">
+        <Button Text="1分" x:Name="buttonA"/>
+        <Button Text="3分" x:Name="buttonB"/>
+        <Button Text="5分" x:Name="buttonC"/>
     </StackLayout>
         
     <Button Text="Start"
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            Clicked="OnStartButtonClicked"
-            x:Name="startButton" />
-    <Button Text="Reset"
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            Clicked="OnResetButtonClicked"/>
-      <Image Source="{local:ImageResource kitchentimer.Resources.Images.bg_mushroom.png}" Aspect="AspectFit" />
+        HorizontalOptions="Center"
+        VerticalOptions="CenterAndExpand"
+        Clicked="OnStartButtonClicked"
+        x:Name="startButton" 
+        AbsoluteLayout.LayoutBounds="0.5, 0.95, AutoSize, AutoSize" 
+        AbsoluteLayout.LayoutFlags="PositionProportional"/>
+    <Button Text="C"
+        HorizontalOptions="Center"
+        VerticalOptions="CenterAndExpand"
+        Clicked="OnResetButtonClicked"
+        AbsoluteLayout.LayoutBounds="0.975, 0.84, 60, AutoSize" 
+        AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
-  </StackLayout>
+  </AbsoluteLayout>
 </ContentPage>
