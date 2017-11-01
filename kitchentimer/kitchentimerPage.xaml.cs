@@ -20,6 +20,7 @@ namespace kitchentimer
             InitializeComponent();
             ringTone = DependencyService.Get<IRingTone>();
             ResetLabel();
+            bg1.IsVisible = false;
             foreach (var s in Enum.GetValues(typeof(Sec)))
             {
                 var button = this.FindByName<Button>("button" + s.ToString());
@@ -132,7 +133,19 @@ namespace kitchentimer
             DateTime now = DateTime.Now;
             TimeSpan diff = finishTime - now;
             valueLabel.Text = FormatMinSec((int)diff.TotalSeconds);
+            ChangeImage((int)diff.TotalSeconds);
             return diff > TimeSpan.Zero;
+        }
+
+        private void ChangeImage (int n)
+        {
+            if(n % 2 == 0){
+                bg0.IsVisible = true;
+                bg1.IsVisible = false;
+            }else{
+                bg0.IsVisible = false;
+                bg1.IsVisible = true;
+            }
         }
 
         private void ResetLabel ()
