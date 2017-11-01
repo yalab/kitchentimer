@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Text;
+using System.Collections.Generic;
 
 namespace kitchentimer
 {
@@ -14,13 +15,22 @@ namespace kitchentimer
         int Seconds = 0;
         const int MAX_SECONDS = 100 * 60;
         const string START_LABEL = "Start";
+        List<Image> Images = new List<Image>();
 
         public kitchentimerPage()
         {
+
             InitializeComponent();
             ringTone = DependencyService.Get<IRingTone>();
             ResetLabel();
-            bg1.IsVisible = false;
+            var children = layout.Children;
+            foreach (var child in children)
+            {
+                if (child.GetType() == typeof(Image)) {
+                    Images.Add((Image)child);
+                }
+            }
+            ChangeImage(0);
             foreach (var s in Enum.GetValues(typeof(Sec)))
             {
                 var button = this.FindByName<Button>("button" + s.ToString());
@@ -32,7 +42,7 @@ namespace kitchentimer
         private void OnSecButtonClick(Object sec)
         {
             Seconds += (int) sec;
-            if (Seconds > MAX_SECONDS){
+            if (Seconds > MAX_SECONDS) {
                 Seconds = MAX_SECONDS;
             }
             valueLabel.Text = FormatMinSec(Seconds);
@@ -111,6 +121,7 @@ namespace kitchentimer
             ResetLabel();
             finishTime = TimeZero;
             ringTone.Stop();
+            ChangeImage(0);
         }
 
         private Boolean Tick()
@@ -137,14 +148,11 @@ namespace kitchentimer
             return diff > TimeSpan.Zero;
         }
 
-        private void ChangeImage (int n)
+        private void ChangeImage (int sec)
         {
-            if(n % 2 == 0){
-                bg0.IsVisible = true;
-                bg1.IsVisible = false;
-            }else{
-                bg0.IsVisible = false;
-                bg1.IsVisible = true;
+            var visibleIndex = sec % Images.Count;
+            for (var n = 0; n < Images.Count; n++) {
+                Images[n].IsVisible = (n == visibleIndex);
             }
         }
 

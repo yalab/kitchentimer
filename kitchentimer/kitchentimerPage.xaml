@@ -3,19 +3,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:local="clr-namespace:kitchentimer;assembly=kitchentimer" 
     x:Class="kitchentimer.kitchentimerPage">
-  <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+  <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="layout">
 
         
     <Image Source="{local:ImageResource kitchentimer.Resources.Images.background0.png}" 
         Aspect="AspectFill" 
         AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
-        AbsoluteLayout.LayoutFlags="All"
-        x:Name="bg0"/>
+        AbsoluteLayout.LayoutFlags="All"/>
+        
     <Image Source="{local:ImageResource kitchentimer.Resources.Images.background1.png}" 
         Aspect="AspectFill" 
         AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
-        AbsoluteLayout.LayoutFlags="All"
-        x:Name="bg1"/>
+        AbsoluteLayout.LayoutFlags="All"/>
         
     <Label x:Name="valueLabel"
         Text="--:--"
