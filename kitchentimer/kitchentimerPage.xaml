@@ -6,7 +6,7 @@
   <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="layout">
 
         
-    <Image Source="{local:ImageResource kitchentimer.Resources.Images.background0.png}" 
+<!--    <Image Source="{local:ImageResource kitchentimer.Resources.Images.background0.png}" 
         Aspect="AspectFill" 
         AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
         AbsoluteLayout.LayoutFlags="All"/>
@@ -15,7 +15,7 @@
         Aspect="AspectFill" 
         AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
         AbsoluteLayout.LayoutFlags="All"/>
-        
+-->        
     <Label x:Name="valueLabel"
         Text="--:--"
         Font="40"
