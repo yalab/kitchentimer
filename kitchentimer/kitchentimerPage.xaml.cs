@@ -26,9 +26,9 @@ namespace kitchentimer
             var children = layout.Children;
             foreach (var child in children)
             {
-                if (child.GetType() == typeof(Image)) {
-                    Images.Add((Image)child);
-                }
+                //if (child.GetType() == typeof(Image)) {
+                //    Images.Add((Image)child);
+                //}
             }
             ChangeImage(0);
             foreach (var s in Enum.GetValues(typeof(Sec)))
@@ -150,10 +150,10 @@ namespace kitchentimer
 
         private void ChangeImage (int sec)
         {
-            var visibleIndex = sec % Images.Count;
-            for (var n = 0; n < Images.Count; n++) {
-                Images[n].IsVisible = (n == visibleIndex);
-            }
+            //var visibleIndex = sec % Images.Count;
+            //for (var n = 0; n < Images.Count; n++) {
+            //    Images[n].IsVisible = (n == visibleIndex);
+            //}
         }
 
         private void ResetLabel ()
