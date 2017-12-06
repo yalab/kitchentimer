@@ -4,6 +4,9 @@
     xmlns:local="clr-namespace:kitchentimer;assembly=kitchentimer" 
     x:Class="kitchentimer.kitchentimerPage">
   <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="layout">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <local:AdMobBanner WidthRequest="320" HeightRequest="50" />
+    </StackLayout>    
 
         
 <!--    <Image Source="{local:ImageResource kitchentimer.Resources.Images.background0.png}" 

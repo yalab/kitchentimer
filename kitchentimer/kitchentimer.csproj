@@ -50,6 +50,7 @@
     <Compile Include="IRingTone.cs" />
     <Compile Include="ImageResourceExtension.cs" />
     <Compile Include="Sec.cs" />
+    <Compile Include="AdMobBanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
