@@ -4,12 +4,12 @@
     xmlns:local="clr-namespace:kitchentimer;assembly=kitchentimer" 
     x:Class="kitchentimer.kitchentimerPage">
   <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="layout">
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+<!--    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <local:AdMobBanner WidthRequest="320" HeightRequest="50" />
     </StackLayout>    
-
+-->
         
-<!--    <Image Source="{local:ImageResource kitchentimer.Resources.Images.background0.png}" 
+    <Image Source="{local:ImageResource kitchentimer.Resources.Images.background0.png}" 
         Aspect="AspectFill" 
         AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
         AbsoluteLayout.LayoutFlags="All"/>
@@ -18,7 +18,17 @@
         Aspect="AspectFill" 
         AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
         AbsoluteLayout.LayoutFlags="All"/>
--->        
+
+    <Image Source="{local:ImageResource kitchentimer.Resources.Images.background2.png}" 
+        Aspect="AspectFill" 
+        AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
+        AbsoluteLayout.LayoutFlags="All"/>
+        
+    <Image Source="{local:ImageResource kitchentimer.Resources.Images.background3.png}" 
+        Aspect="AspectFill" 
+        AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
+        AbsoluteLayout.LayoutFlags="All"/>
+        
     <Label x:Name="valueLabel"
         Text="--:--"
         Font="40"
@@ -30,9 +40,9 @@
         HorizontalOptions="Center"
         AbsoluteLayout.LayoutBounds="0.12, 0.84, AutoSize, AutoSize" 
         AbsoluteLayout.LayoutFlags="PositionProportional">
-        <Button Text="1分" x:Name="buttonA" BackgroundColor="#F7F7F9" TextColor="#292b2c" BorderWidth="1" WidthRequest="50" Margin="8,0,8,0"/>
-        <Button Text="3分" x:Name="buttonB" BackgroundColor="#F7F7F9" TextColor="#292b2c" BorderWidth="1" WidthRequest="50" Margin="8,0,8,0"/>
-        <Button Text="5分" x:Name="buttonC" BackgroundColor="#F7F7F9" TextColor="#292b2c" BorderWidth="1" WidthRequest="50" Margin="8,0,8,0"/>
+        <Button Text="1分" x:Name="buttonA" BackgroundColor="#F7F7F9" TextColor="#292b2c" Margin="8,0,8,0"/>
+        <Button Text="3分" x:Name="buttonB" BackgroundColor="#F7F7F9" TextColor="#292b2c" Margin="8,0,8,0"/>
+        <Button Text="5分" x:Name="buttonC" BackgroundColor="#F7F7F9" TextColor="#292b2c" Margin="8,0,8,0"/>
     </StackLayout>
         
     <Button Text="Start"
@@ -40,14 +50,14 @@
         VerticalOptions="CenterAndExpand"
         Clicked="OnStartButtonClicked"
         x:Name="startButton"
-        BackgroundColor="#F7F7F9" TextColor="#292b2c" BorderWidth="1" WidthRequest="180"
+        BackgroundColor="#F7F7F9" TextColor="#292b2c"
         AbsoluteLayout.LayoutBounds="0.5, 0.95, AutoSize, AutoSize" 
         AbsoluteLayout.LayoutFlags="PositionProportional"/>
     <Button Text="C"
         HorizontalOptions="Center"
         VerticalOptions="CenterAndExpand"
         Clicked="OnResetButtonClicked"
-        BackgroundColor="#F7F7F9" TextColor="#292b2c" BorderWidth="1" WidthRequest="50"
+        BackgroundColor="#F7F7F9" TextColor="#292b2c"
         AbsoluteLayout.LayoutBounds="0.975, 0.84, 60, AutoSize" 
         AbsoluteLayout.LayoutFlags="PositionProportional"/>
 

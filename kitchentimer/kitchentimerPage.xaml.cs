@@ -16,7 +16,9 @@ namespace kitchentimer
         const int MAX_SECONDS = 100 * 60;
         const string START_LABEL = "Start";
         List<Image> Images = new List<Image>();
-
+        int[] TimerImageIndices = new int[] { 0, 1 };
+        int[] RingImageIndices = new int[] { 2, 3 };
+        
         public kitchentimerPage()
         {
 
@@ -26,9 +28,9 @@ namespace kitchentimer
             var children = layout.Children;
             foreach (var child in children)
             {
-                //if (child.GetType() == typeof(Image)) {
-                //    Images.Add((Image)child);
-                //}
+                if (child.GetType() == typeof(Image)) {
+                    Images.Add((Image)child);
+                }
             }
             ChangeImage(0);
             foreach (var s in Enum.GetValues(typeof(Sec)))
@@ -139,21 +141,35 @@ namespace kitchentimer
             return true;
         }
 
+        private Boolean isRinging(){
+            return finishTime == TimeZero;
+        }
+
         private Boolean NextTick ()
         {
             DateTime now = DateTime.Now;
             TimeSpan diff = finishTime - now;
             valueLabel.Text = FormatMinSec((int)diff.TotalSeconds);
-            ChangeImage((int)diff.TotalSeconds);
+            ChangeImage((double)diff.TotalMilliseconds);
             return diff > TimeSpan.Zero;
         }
 
-        private void ChangeImage (int sec)
+        private void ChangeImage (double msec)
         {
-            //var visibleIndex = sec % Images.Count;
-            //for (var n = 0; n < Images.Count; n++) {
-            //    Images[n].IsVisible = (n == visibleIndex);
-            //}
+            int[] indices = new int[] {};
+            int t = 0;
+            if (isRinging()) {
+                indices = RingImageIndices;
+                t = (int) msec / 200;
+            } else {
+                indices = TimerImageIndices;
+                t = (int) msec / 1000;
+            }
+            var i = t % indices.Length;
+            var visibleIndex = indices[i];
+            for (var n = 0; n < Images.Count; n++) {
+                Images[n].IsVisible = (n == visibleIndex);
+            }
         }
 
         private void ResetLabel ()
