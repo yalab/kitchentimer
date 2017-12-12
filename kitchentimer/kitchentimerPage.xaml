@@ -11,7 +11,8 @@
                 <Setter Property="BorderColor" Value="#FFF" />
                 <Setter Property="BorderWidth" Value="2" />
                 <Setter Property="TextColor" Value="#FFF" />
-                <Setter Property="WidthRequest" Value="80   " />
+                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="FontSize" Value="15" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -54,6 +55,7 @@
         <Button Text="1分" x:Name="buttonA" Style="{StaticResource ButtonStyle}" Margin="8,0,8,0"/>
         <Button Text="3分" x:Name="buttonB" Style="{StaticResource ButtonStyle}" Margin="8,0,8,0"/>
         <Button Text="5分" x:Name="buttonC" Style="{StaticResource ButtonStyle}" Margin="8,0,8,0"/>
+        <Button Text="C" Clicked="OnResetButtonClicked" Style="{StaticResource ButtonStyle}" Margin="15,0,8,0" />
     </StackLayout>
         
     <Button Text="Start"
@@ -61,15 +63,9 @@
         VerticalOptions="CenterAndExpand"
         Clicked="OnStartButtonClicked"
         x:Name="startButton"
+        WidthRequest="160"
         Style="{StaticResource ButtonStyle}"
         AbsoluteLayout.LayoutBounds="0.5, 0.95, AutoSize, AutoSize" 
-        AbsoluteLayout.LayoutFlags="PositionProportional"/>
-    <Button Text="C"
-        HorizontalOptions="Center"
-        VerticalOptions="CenterAndExpand"
-        Clicked="OnResetButtonClicked"
-        Style="{StaticResource ButtonStyle}"
-        AbsoluteLayout.LayoutBounds="0.975, 0.84, 60, AutoSize" 
         AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
   </AbsoluteLayout>
