@@ -3,12 +3,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:local="clr-namespace:kitchentimer;assembly=kitchentimer" 
     x:Class="kitchentimer.kitchentimerPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="BorderColor" Value="#FFF" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="WidthRequest" Value="80   " />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
   <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="layout">
 <!--    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <local:AdMobBanner WidthRequest="320" HeightRequest="50" />
     </StackLayout>    
 -->
-        
     <Image Source="{local:ImageResource kitchentimer.Resources.Images.background0.png}" 
         Aspect="AspectFill" 
         AbsoluteLayout.LayoutBounds="1.0, 1.0, 1.0, 1.0"
@@ -40,9 +51,9 @@
         HorizontalOptions="Center"
         AbsoluteLayout.LayoutBounds="0.12, 0.84, AutoSize, AutoSize" 
         AbsoluteLayout.LayoutFlags="PositionProportional">
-        <Button Text="1分" x:Name="buttonA" BackgroundColor="#F7F7F9" TextColor="#292b2c" Margin="8,0,8,0"/>
-        <Button Text="3分" x:Name="buttonB" BackgroundColor="#F7F7F9" TextColor="#292b2c" Margin="8,0,8,0"/>
-        <Button Text="5分" x:Name="buttonC" BackgroundColor="#F7F7F9" TextColor="#292b2c" Margin="8,0,8,0"/>
+        <Button Text="1分" x:Name="buttonA" Style="{StaticResource ButtonStyle}" Margin="8,0,8,0"/>
+        <Button Text="3分" x:Name="buttonB" Style="{StaticResource ButtonStyle}" Margin="8,0,8,0"/>
+        <Button Text="5分" x:Name="buttonC" Style="{StaticResource ButtonStyle}" Margin="8,0,8,0"/>
     </StackLayout>
         
     <Button Text="Start"
@@ -50,14 +61,14 @@
         VerticalOptions="CenterAndExpand"
         Clicked="OnStartButtonClicked"
         x:Name="startButton"
-        BackgroundColor="#F7F7F9" TextColor="#292b2c"
+        Style="{StaticResource ButtonStyle}"
         AbsoluteLayout.LayoutBounds="0.5, 0.95, AutoSize, AutoSize" 
         AbsoluteLayout.LayoutFlags="PositionProportional"/>
     <Button Text="C"
         HorizontalOptions="Center"
         VerticalOptions="CenterAndExpand"
         Clicked="OnResetButtonClicked"
-        BackgroundColor="#F7F7F9" TextColor="#292b2c"
+        Style="{StaticResource ButtonStyle}"
         AbsoluteLayout.LayoutBounds="0.975, 0.84, 60, AutoSize" 
         AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
