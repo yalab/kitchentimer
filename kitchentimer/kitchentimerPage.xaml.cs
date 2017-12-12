@@ -8,8 +8,8 @@ namespace kitchentimer
 {
     public partial class kitchentimerPage : ContentPage
     {
-        DateTime finishTime;
-        DateTime stoppedTime;
+        DateTime finishedAt;
+        DateTime stoppedAt;
         IRingTone ringTone;
         DateTime TimeZero = new DateTime(0);
         int Seconds = 0;
@@ -79,7 +79,7 @@ namespace kitchentimer
         private void OnStartButtonClicked(object sender, EventArgs args)
         {
             Button btn = (Button)sender;
-            if (Seconds > 0 || stoppedTime > TimeZero) {
+            if (Seconds > 0 || stoppedAt > TimeZero) {
                 StartTimer();
             } else if (!NextTick()) {
                 ResetTimer();
@@ -96,11 +96,11 @@ namespace kitchentimer
         private async void StartTimer()
         {
             startButton.Text = "Stop";
-            if (stoppedTime > TimeZero) {
-                finishTime += DateTime.Now - stoppedTime;
-                stoppedTime = TimeZero;
+            if (stoppedAt > TimeZero) {
+                finishedAt += DateTime.Now - stoppedAt;
+                stoppedAt = TimeZero;
             } else {
-                finishTime = DateTime.Now.AddSeconds(Seconds);
+                finishedAt = DateTime.Now.AddSeconds(Seconds);
                 Seconds = 0;
             }
             while (true)
@@ -115,23 +115,23 @@ namespace kitchentimer
         private void StopTimer()
         {
             startButton.Text = "Start";
-            stoppedTime = DateTime.Now;
+            stoppedAt = DateTime.Now;
         }
 
         private void ResetTimer()
         {
             ResetLabel();
-            finishTime = TimeZero;
+            finishedAt = TimeZero;
             ringTone.Stop();
             ChangeImage(0);
         }
 
         private Boolean Tick()
         {
-            if (finishTime == TimeZero) {
+            if (finishedAt == TimeZero) {
                 return false;
             }
-            if (stoppedTime > TimeZero) {
+            if (stoppedAt > TimeZero) {
                 return true;
             }
             if (!NextTick()) {
@@ -142,13 +142,13 @@ namespace kitchentimer
         }
 
         private Boolean isRinging(){
-            return finishTime == TimeZero;
+            return finishedAt == TimeZero;
         }
 
         private Boolean NextTick ()
         {
             DateTime now = DateTime.Now;
-            TimeSpan diff = finishTime - now;
+            TimeSpan diff = finishedAt - now;
             valueLabel.Text = FormatMinSec((int)diff.TotalSeconds);
             ChangeImage((double)diff.TotalMilliseconds);
             return diff > TimeSpan.Zero;
@@ -176,14 +176,14 @@ namespace kitchentimer
         {
             valueLabel.Text = "--:--";
             Seconds = 0;
-            stoppedTime = TimeZero;
-            finishTime = TimeZero;
+            stoppedAt = TimeZero;
+            finishedAt = TimeZero;
             startButton.Text = "Start";
         }
 
         private void TimerFinished ()
         {
-            finishTime = TimeZero;
+            finishedAt = TimeZero;
             ringTone.Play();
         }
     }
