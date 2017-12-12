@@ -43,6 +43,9 @@ namespace kitchentimer
 
         private void OnSecButtonClick(Object sec)
         {
+            if(finishedAt != TimeZero){
+                return;
+            }
             Seconds += (int) sec;
             if (Seconds > MAX_SECONDS) {
                 Seconds = MAX_SECONDS;
